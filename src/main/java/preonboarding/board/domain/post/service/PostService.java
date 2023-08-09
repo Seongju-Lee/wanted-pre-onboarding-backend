@@ -25,30 +25,21 @@ public class PostService {
     private final UserRepository userRepository;
 
     @Transactional
-    public PostResponse createPost(
-            String userEmail,
-            PostRequest saveRequest
-    ) {
+    public PostResponse createPost(String userEmail, PostRequest saveRequest) {
         User user = userRepository.findByEmail(userEmail)
                 .orElseThrow(() -> new NoSuchElementException("없는 사용자입니다."));
-        Post savedPost = postRepository.save(
-                new Post(user, saveRequest.getTitle(), saveRequest.getContent())
-        );
+        Post newPost = new Post(user, saveRequest.getTitle(), saveRequest.getContent());
+        Post savedPost = postRepository.save(newPost);
         return PostResponse.fromEntity(savedPost);
     }
 
     @Transactional
-    public PostResponse updatePost(
-            PostRequest updateRequest,
-            String userEmail,
-            Long postId
-    ) {
-        Post foundPost = postRepository.findById(postId)
-                .orElseThrow(() -> new NoSuchElementException("없는 게시글입니다."));
+    public PostResponse updatePost(PostRequest updateRequest, String userEmail, Long postId) {
+        Post post = findPostByIdOrThrowException(postId);
 
-        if(foundPost.getUser().getEmail().equalsIgnoreCase(userEmail)) {
-            foundPost.updatePost(updateRequest.getTitle(), updateRequest.getContent());
-            return PostResponse.fromEntity(foundPost);
+        if(post.getUser().getEmail().equalsIgnoreCase(userEmail)) {
+            post.updatePost(updateRequest.getTitle(), updateRequest.getContent());
+            return PostResponse.fromEntity(post);
         }
         throw new AccessDeniedException("파일 수정 권한이 없습니다.");
     }
@@ -61,19 +52,21 @@ public class PostService {
 
     @Transactional(readOnly = true)
     public PostResponse findPostById(Long postId) {
-        Post post = postRepository.findById(postId)
-                .orElseThrow(() -> new NoSuchElementException("없는 게시글입니다."));
+        Post post = findPostByIdOrThrowException(postId);
         return PostResponse.fromEntity(post);
     }
 
     @Transactional
     public void deletePostById(String userEmail, Long postId) {
-        Post foundPost = postRepository.findById(postId)
-                .orElseThrow(() -> new NoSuchElementException("없는 게시글입니다."));
-
-        if(!foundPost.getUser().getEmail().equalsIgnoreCase(userEmail)) {
+        Post post = findPostByIdOrThrowException(postId);
+        if(!post.getUser().getEmail().equalsIgnoreCase(userEmail)) {
             throw new AccessDeniedException("파일 삭제 권한이 없습니다.");
         }
         postRepository.deleteById(postId);
+    }
+
+    private Post findPostByIdOrThrowException(Long postId) {
+        return postRepository.findById(postId)
+                .orElseThrow(() -> new NoSuchElementException("없는 게시글입니다."));
     }
 }
