@@ -8,7 +8,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import preonboarding.board.domain.post.Post;
-import preonboarding.board.domain.post.repository.PostRepository;
+import preonboarding.board.domain.post.PostRepository;
 import preonboarding.board.domain.user.User;
 import preonboarding.board.domain.user.repository.UserRepository;
 

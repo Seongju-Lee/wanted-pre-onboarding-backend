@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import preonboarding.board.domain.post.dto.PostRequest;
 import preonboarding.board.domain.post.dto.PostResponse;
 import preonboarding.board.domain.post.dto.SimplePostResponse;
-import preonboarding.board.domain.post.service.PostService;
 
 import javax.validation.Valid;
 import java.net.URI;

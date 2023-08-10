@@ -1,17 +1,15 @@
-package preonboarding.board.domain.post.service;
+package preonboarding.board.domain.post;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import preonboarding.board.domain.post.Post;
 import preonboarding.board.domain.user.User;
 import preonboarding.board.domain.post.dto.PostRequest;
 import preonboarding.board.domain.post.dto.PostResponse;
 import preonboarding.board.domain.post.dto.SimplePostResponse;
 import preonboarding.board.global.util.Paging;
-import preonboarding.board.domain.post.repository.PostRepository;
 import preonboarding.board.domain.user.repository.UserRepository;
 
 import java.util.List;
