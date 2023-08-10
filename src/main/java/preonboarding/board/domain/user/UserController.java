@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 import preonboarding.board.domain.user.dto.Token;
 import preonboarding.board.domain.user.dto.UserLoginRequest;
 import preonboarding.board.domain.user.dto.UserSignUpRequest;
-import preonboarding.board.domain.user.service.UserService;
 
 import javax.validation.Valid;
 import java.net.URI;

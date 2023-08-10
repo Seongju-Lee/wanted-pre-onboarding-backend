@@ -19,7 +19,7 @@ import preonboarding.board.domain.post.dto.PostRequest;
 import preonboarding.board.domain.post.dto.PostResponse;
 import preonboarding.board.domain.post.dto.SimplePostResponse;
 import preonboarding.board.domain.post.PostRepository;
-import preonboarding.board.domain.user.repository.UserRepository;
+import preonboarding.board.domain.user.UserRepository;
 
 import java.util.ArrayList;
 import java.util.List;

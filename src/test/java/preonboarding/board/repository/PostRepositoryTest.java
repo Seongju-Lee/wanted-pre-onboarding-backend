@@ -10,7 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import preonboarding.board.domain.post.Post;
 import preonboarding.board.domain.post.PostRepository;
 import preonboarding.board.domain.user.User;
-import preonboarding.board.domain.user.repository.UserRepository;
+import preonboarding.board.domain.user.UserRepository;
 
 import java.util.Optional;
 

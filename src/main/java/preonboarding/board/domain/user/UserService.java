@@ -1,4 +1,4 @@
-package preonboarding.board.domain.user.service;
+package preonboarding.board.domain.user;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -7,11 +7,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import preonboarding.board.configuration.jwt.JwtProvider;
-import preonboarding.board.domain.user.User;
 import preonboarding.board.domain.user.dto.UserLoginRequest;
 import preonboarding.board.domain.user.dto.UserSignUpRequest;
 import preonboarding.board.global.exception.custom.DuplicateEmailException;
-import preonboarding.board.domain.user.repository.UserRepository;
 
 @Service
 @RequiredArgsConstructor

@@ -16,7 +16,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import preonboarding.board.domain.user.UserController;
 import preonboarding.board.domain.user.dto.UserLoginRequest;
 import preonboarding.board.domain.user.dto.UserSignUpRequest;
-import preonboarding.board.domain.user.service.UserService;
+import preonboarding.board.domain.user.UserService;
 import preonboarding.board.global.exception.custom.DuplicateEmailException;
 
 import javax.validation.Validation;

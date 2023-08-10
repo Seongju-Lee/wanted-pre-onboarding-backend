@@ -13,8 +13,8 @@ import preonboarding.board.configuration.jwt.JwtProvider;
 import preonboarding.board.domain.user.User;
 import preonboarding.board.domain.user.dto.UserLoginRequest;
 import preonboarding.board.domain.user.dto.UserSignUpRequest;
-import preonboarding.board.domain.user.repository.UserRepository;
-import preonboarding.board.domain.user.service.UserService;
+import preonboarding.board.domain.user.UserRepository;
+import preonboarding.board.domain.user.UserService;
 
 import java.util.Optional;
 

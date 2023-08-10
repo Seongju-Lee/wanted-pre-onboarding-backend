@@ -21,7 +21,7 @@ import preonboarding.board.domain.post.dto.SimplePostResponse;
 import preonboarding.board.domain.user.dto.UserLoginRequest;
 import preonboarding.board.domain.user.dto.UserSignUpRequest;
 import preonboarding.board.domain.post.PostService;
-import preonboarding.board.domain.user.service.UserService;
+import preonboarding.board.domain.user.UserService;
 
 import java.util.Arrays;
 import java.util.List;

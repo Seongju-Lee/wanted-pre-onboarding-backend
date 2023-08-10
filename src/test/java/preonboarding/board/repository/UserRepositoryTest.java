@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import preonboarding.board.domain.user.User;
-import preonboarding.board.domain.user.repository.UserRepository;
+import preonboarding.board.domain.user.UserRepository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
