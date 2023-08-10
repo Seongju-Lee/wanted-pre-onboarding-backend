@@ -1,4 +1,4 @@
-package preonboarding.board.controller;
+package preonboarding.board.domain.user;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +21,7 @@ public class UserController {
 
     private final UserService userService;
 
-    @PostMapping("/sign-up")
+    @PostMapping("/signup")
     public ResponseEntity<String> signUp(
             @RequestBody @Valid UserSignUpRequest signUpRequest
     ) {

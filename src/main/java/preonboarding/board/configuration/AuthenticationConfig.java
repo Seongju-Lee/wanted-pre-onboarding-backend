@@ -29,7 +29,7 @@ public class AuthenticationConfig {
                 .csrf().disable()
                 .cors().and()
                 .authorizeHttpRequests()
-                .antMatchers("/api/users/sign-up", "/api/users/login").permitAll()
+                .antMatchers("/api/users/signup", "/api/users/login").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/**").authenticated()
                 .antMatchers(HttpMethod.PATCH, "/api/**").authenticated()
                 .antMatchers(HttpMethod.DELETE, "/api/**").authenticated()

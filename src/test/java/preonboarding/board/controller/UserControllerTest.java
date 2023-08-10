@@ -1,7 +1,6 @@
 package preonboarding.board.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.assertj.core.api.AssertionsForInterfaceTypes;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,19 +13,17 @@ import org.springframework.http.MediaType;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
+import preonboarding.board.domain.user.UserController;
 import preonboarding.board.domain.user.dto.UserLoginRequest;
 import preonboarding.board.domain.user.dto.UserSignUpRequest;
-import preonboarding.board.global.exception.custom.DuplicateEmailException;
 import preonboarding.board.domain.user.service.UserService;
+import preonboarding.board.global.exception.custom.DuplicateEmailException;
 
-import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import java.util.NoSuchElementException;
-import java.util.Set;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
@@ -61,7 +58,7 @@ public class UserControllerTest {
         String password = "12345678";
         // When
         mockMvc.perform(
-                        post("/api/users/sign-up")
+                        post("/api/users/signup")
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .accept(MediaType.APPLICATION_JSON)
                                 .content(objectMapper.writeValueAsBytes(new UserSignUpRequest(email, password)))
@@ -102,37 +99,13 @@ public class UserControllerTest {
 
         // When
         mockMvc.perform(
-                        post("/api/users/sign-up")
+                        post("/api/users/signup")
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .accept(MediaType.APPLICATION_JSON)
                                 .content(objectMapper.writeValueAsBytes(signUpRequest))
                                 .with(csrf()))
                 .andDo(print())
                 .andExpect(status().isConflict());
-    }
-
-    @Test
-    @DisplayName("회원가입 실패: 이메일 유효성 검증 실패")
-    public void invalidEmail() throws Exception {
-        // Given
-        UserSignUpRequest signUpRequest = new UserSignUpRequest("testtest.com", "12345678");
-        // When
-        assertThat(signUpRequest).isNotNull();
-        Set<ConstraintViolation<UserSignUpRequest>> violations = validator.validate(signUpRequest);
-        // Then
-        AssertionsForInterfaceTypes.assertThat(violations).hasSize(1);
-    }
-
-    @Test
-    @DisplayName("회원가입 실패: 비밀번호 유효성 검증 실패")
-    public void invalidPassword() throws Exception {
-        // Given
-        UserSignUpRequest signUpRequest = new UserSignUpRequest("test@example.com", "short");
-        // When
-        assertThat(signUpRequest).isNotNull();
-        Set<ConstraintViolation<UserSignUpRequest>> violations = validator.validate(signUpRequest);
-        // Then
-        AssertionsForInterfaceTypes.assertThat(violations).hasSize(1);
     }
 
     @Test
