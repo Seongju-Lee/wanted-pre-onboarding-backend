@@ -26,10 +26,7 @@ public class UserService {
     public Long signUp(UserSignUpRequest signUpRequest) {
         checkDuplicateEmail(signUpRequest.getEmail());
 
-        User user = new User(
-                signUpRequest.getEmail(),
-                encoder.encode(signUpRequest.getPassword())
-        );
+        User user = new User(signUpRequest.getEmail(), encoder.encode(signUpRequest.getPassword()));
         User savedUser = userRepository.save(user);
         return savedUser.getUserId();
     }

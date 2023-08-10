@@ -1,4 +1,4 @@
-package preonboarding.board.controller;
+package preonboarding.board.domain;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
