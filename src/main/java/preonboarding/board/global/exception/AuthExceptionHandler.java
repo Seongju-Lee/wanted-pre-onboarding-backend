@@ -47,7 +47,7 @@ public class AuthExceptionHandler {
 
     private ErrorResponse createResponse(int code, String message) {
         return ErrorResponse.builder()
-                .code(HttpStatus.CONFLICT.value())
+                .code(code)
                 .message(message)
                 .build();
     }
