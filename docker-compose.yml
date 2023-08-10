@@ -1,0 +1,36 @@
+version: "3"
+services:
+  database:
+    image: mysql:8.0
+    container_name: board_db
+    environment:
+      - MYSQL_DATABASE=${docker.database.name}
+      - MYSQL_ROOT_HOST=%
+      - MYSQL_ROOT_PASSWORD=${docker.database.root-password}
+    ports:
+      - 3306:3306
+    volumes:
+      - ./db/data:/var/lib/mysql
+    networks:
+      - pre_onboarding
+  webapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    depends_on:
+      - database
+    ports:
+      - 80:8080
+    container_name: board_app
+    environment:
+      DB_URL: jdbc:mysql://database:3306/${docker.database.name}
+      DB_USER: ${docker.database.user}
+      DB_PASSWORD: ${docker.database.password}
+      JWT_EXPIRATION-KEY: ${jwt.expiration-key}
+      JWT_ISSUER: ${jwt.issuer}
+      JWT_SECRET-KEY: ${jwt.secret-key}
+    networks:
+      - pre_onboarding
+networks:
+  pre_onboarding:
