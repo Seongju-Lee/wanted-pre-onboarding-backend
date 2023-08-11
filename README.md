@@ -108,15 +108,135 @@
 
 <img src="https://github.com/Seongju-Lee/wanted-pre-onboarding-backend/assets/67941526/56aca9ff-6882-46fc-9186-8aaa0e0c4d76" alt="API 명세 이미지" width="370">
 
-위 명세 페이지에서 각 API 우측에 있는 드롭다운을 통해 **각 API별 예외 상황에 대한 요청과 응답도 확인 가능**합니다.
+**자세한 요청과 응답에 대한 API 명세는 위 페이지에서 확인하실 수 있습니다.**  
+각 API 우측에 있는 드롭다운을 통해 **API별 예외 상황에 대한 요청과 응답도 확인하실 수 있습니다.**
 
 ### 회원
-- POST /api/users/signup (회원가입)
-- POST /api/users/login (로그인)
+- **POST /api/users/signup (회원가입)**
+  
+  - **요청**  
+    POST /api/users/signup HTTP  
+    Host: 34.64.245.242  
+   {  
+          "email": "test@test.com",  
+          "password": "12345678"  
+   }  
 
+   - **응답**  
+     HTTP 201 CREATED  
+     Location: /users/1
+     
+- **POST /api/users/login (로그인)**
+  
+   - **요청**  
+     POST /api/users/login HTTP  
+     Host: 34.64.245.242  
+  
+     {  
+              "email": "test2@test.com",  
+              "password": "12345678"  
+     }
+
+    - **응답**  
+      HTTP 200 OK  
+
+      {  
+          "token": Bearer <JWT>  
+      }
+
+      
 ### 게시글
-- POST /api/posts (게시글 생성)
-- GET /api/posts?page={pageNumber} (게시글 목록 조회)
-- GET /api/posts/{postId} (특정 게시글 조회)
-- PATCH /api/posts/{postId} (게시글 수정)
-- DELETE /api/posts/{postId} (게시글 삭제)
+- **POST /api/posts (게시글 생성)**
+  - **요청**  
+    POST /api/posts HTTP  
+    Host: 34.64.245.242
+    
+    {  
+       "title": "게시글 제목",  
+       "content": "게시글 내용"  
+    }
+    
+  - **응답**  
+    HTTP 201 CREATED  
+    Location: /posts/1  
+
+    {  
+       "postId": 1,  
+       "userEmail": "test@test.com",  
+       "title": "게시글 제목",  
+       "content": "게시글 내용"  
+    }  
+
+
+    
+- **GET /api/posts?page={pageNumber} (게시글 목록 조회)**
+  - **요청**  
+    GET /api/posts?page=1 HTTP  
+    Host: 34.64.245.242  
+    
+  - **응답**  
+    HTTP 200 OK  
+   [  
+       {  
+           "postId": 1,  
+           "userEmail": "test@test.com",  
+           "title": "게시글 제목"  
+       },  
+       {  
+           "postId": 2,  
+           "userEmail": "test@test.com",  
+           "title": "게시글 제목"  
+       }  
+   ]
+  
+- **GET /api/posts/{postId} (특정 게시글 조회)**
+  - **요청**  
+    GET /api/posts/1 HTTP  
+    Host: 34.64.245.242  
+
+  - **응답**  
+    HTTP 200 OK  
+  
+    {  
+       "postId": 1,  
+       "userEmail": "test@test.com",  
+       "title": "게시글 제목",  
+       "content": "게시글 내용"  
+    }  
+
+
+    
+- **PATCH /api/posts/{postId} (게시글 수정)**
+  - **요청**  
+    PATCH /api/posts/1 HTTP   
+    Host: 34.64.245.242   
+    Authorization: Bearer <JWT>  
+
+    {  
+       "title": "게시물 제목 수정",  
+       "content": "게시물 내용도 수정"  
+    }  
+
+    
+  - **응답**  
+    HTTP 200 OK  
+
+    {  
+       "postId": 1,  
+       "userEmail": "test@test.com",  
+       "title": "게시물 제목 수정",  
+       "content": "게시물 내용도 수정"  
+    }
+    
+
+
+- **DELETE /api/posts/{postId} (게시글 삭제)**
+  - **요청**  
+    DELETE /api/posts/1 HTTP  
+    Host: 34.64.245.242  
+    Authorization: Bearer JWT
+    
+
+  - **응답**  
+    HTTP 204 NO CONTENT
+
