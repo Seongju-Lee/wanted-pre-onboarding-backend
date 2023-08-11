@@ -38,7 +38,7 @@
 1. `34.64.245.242`을 통해 API를 호출할 수 있습니다. 다양한 API에 대해서는 [API 명세](https://documenter.getpostman.com/view/21381528/2s9Xy3rqmx) 또는 [시연 영상](https://youtu.be/5dSjj8lDnUM)을 통해 확인하실 수 있습니다.
   
 <br></br>
-## 📌 데이터베이스 테이블 구조
+## 📌 데이터베이스(MySQL 8.0) 테이블 구조
 <img src="https://github.com/Seongju-Lee/wanted-pre-onboarding-backend/assets/67941526/2d6fbaf9-8dfc-4f33-97a6-d3f2f48beb73" alt="diagram" width="300">
 
 ### User 테이블
