@@ -141,7 +141,7 @@
       HTTP 200 OK  
 
       {  
-          "token": Bearer <JWT>  
+          "token": Bearer {JWT}  
       }
 
       
@@ -149,7 +149,8 @@
 - **POST /api/posts (게시글 생성)**
   - **요청**  
     POST /api/posts HTTP  
-    Host: 34.64.245.242
+    Host: 34.64.245.242  
+    Authorization: Bearer {JWT}  
     
     {  
        "title": "게시글 제목",  
@@ -210,7 +211,7 @@
   - **요청**  
     PATCH /api/posts/1 HTTP   
     Host: 34.64.245.242   
-    Authorization: Bearer <JWT>  
+    Authorization: Bearer {JWT}  
 
     {  
        "title": "게시물 제목 수정",  
@@ -234,7 +235,7 @@
   - **요청**  
     DELETE /api/posts/1 HTTP  
     Host: 34.64.245.242  
-    Authorization: Bearer JWT
+    Authorization: Bearer {JWT}  
     
 
   - **응답**  
