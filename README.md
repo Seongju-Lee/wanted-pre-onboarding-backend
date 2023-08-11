@@ -102,7 +102,7 @@
 - 엔티티에선 자바 검증 로직을 작성하여 생성/수정 시에 검증 로직이 작동하게끔 구현하였습니다.
 
 <br></br>
-## 📚 API 명세(request/response 포함)
+## 📚 [API 명세(request/response 포함)](https://documenter.getpostman.com/view/21381528/2s9Xy3rqmx)
 
 [API 명세 바로가기](https://documenter.getpostman.com/view/21381528/2s9Xy3rqmx)
 
